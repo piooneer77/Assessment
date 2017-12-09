@@ -8,6 +8,7 @@ public class ContactDetails {
 
     // <editor-fold defaultstate="collapsed" desc="Properties">
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer accountId;
     private String email;
     private String address;

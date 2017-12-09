@@ -8,8 +8,13 @@ import java.time.LocalDate;
 public class StudentResult {
 
     // <editor-fold defaultstate="collapsed" desc="Properties">
-    private Integer accountId;
-    private Integer examId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer Id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Student student;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Exam exam;
     private Integer marks;
     private LocalDate date;
     // </editor-fold>
@@ -18,21 +23,25 @@ public class StudentResult {
     public StudentResult() {
     }
 
-    public StudentResult(Integer accountId, Integer examId, Integer marks, LocalDate date) {
-        this.accountId = accountId;
-        this.examId = examId;
+    public StudentResult(Student student, Exam exam, Integer marks, LocalDate date) {
+        this.student = student;
+        this.exam = exam;
         this.marks = marks;
         this.date = date;
     }
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Getters">
-    public Integer getAccountId() {
-        return accountId;
+    public Integer getId() {
+        return Id;
     }
 
-    public Integer getExamId() {
-        return examId;
+    public Student getStudent() {
+        return student;
+    }
+
+    public Exam getExam() {
+        return exam;
     }
 
     public Integer getMarks() {
@@ -45,12 +54,12 @@ public class StudentResult {
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Setters">
-    public void setAccountId(Integer accountId) {
-        this.accountId = accountId;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
-    public void setExamId(Integer examId) {
-        this.examId = examId;
+    public void setExam(Exam exam) {
+        this.exam = exam;
     }
 
     public void setMarks(Integer marks) {

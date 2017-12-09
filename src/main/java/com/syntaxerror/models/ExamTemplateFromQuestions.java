@@ -10,23 +10,19 @@ public class ExamTemplateFromQuestions {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer Id;
-    private Integer examId;
-    private Integer questionId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Exam exam;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Question question;
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Constructors">
     public ExamTemplateFromQuestions() {
     }
 
-    public ExamTemplateFromQuestions(Integer examId, Integer questionId) {
-        this.examId = examId;
-        this.questionId = questionId;
-    }
-
-    public ExamTemplateFromQuestions(Integer Id, Integer examId, Integer questionId) {
-        this.Id = Id;
-        this.examId = examId;
-        this.questionId = questionId;
+    public ExamTemplateFromQuestions(Exam exam, Question question) {
+        this.exam = exam;
+        this.question = question;
     }
     // </editor-fold>
 
@@ -35,22 +31,22 @@ public class ExamTemplateFromQuestions {
         return Id;
     }
 
-    public Integer getExamId() {
-        return examId;
+    public Exam getExam() {
+        return exam;
     }
 
-    public Integer getQuestionId() {
-        return questionId;
+    public Question getQuestion() {
+        return question;
     }
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Setters">
-    public void setExamId(Integer examId) {
-        this.examId = examId;
+    public void setExam(Exam exam) {
+        this.exam = exam;
     }
 
-    public void setQuestionId(Integer questionId) {
-        this.questionId = questionId;
+    public void setQuestion(Question question) {
+        this.question = question;
     }
     // </editor-fold>
 

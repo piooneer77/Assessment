@@ -2,8 +2,7 @@ package com.syntaxerror.models;
 
 import javax.persistence.*;
 
-@Entity
-@Table( name = "account_table" )
+@MappedSuperclass
 public class Account {
 
     // <editor-fold defaultstate="collapsed" desc="Properties">
@@ -24,17 +23,6 @@ public class Account {
     }
 
     public Account(String firstName, String lastName, String user, String magic, Boolean isAdmin, Boolean isLocked, Boolean isActive) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.user = user;
-        this.magic = magic;
-        this.isAdmin = isAdmin;
-        this.isLocked = isLocked;
-        this.isActive = isActive;
-    }
-
-    public Account(Integer Id, String firstName, String lastName, String user, String magic, Boolean isAdmin, Boolean isLocked, Boolean isActive) {
-        this.Id = Id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.user = user;

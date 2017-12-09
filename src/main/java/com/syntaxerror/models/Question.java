@@ -1,6 +1,8 @@
 package com.syntaxerror.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "question_table")
@@ -14,6 +16,8 @@ public class Question {
     private String modelAnswer;
     private Integer marks;
     private String subject;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
+    private List<ExamTemplateFromQuestions> examTemplateFromQuestionss = new ArrayList<>();
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Constructors">
@@ -56,6 +60,10 @@ public class Question {
     public String getSubject() {
         return subject;
     }
+
+    public List<ExamTemplateFromQuestions> getExamTemplateFromQuestionss() {
+        return examTemplateFromQuestionss;
+    }
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Setters">
@@ -73,6 +81,10 @@ public class Question {
 
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+
+    public void setExamTemplateFromQuestionss(ExamTemplateFromQuestions examTemplateFromQuestions) {
+        this.examTemplateFromQuestionss.add(examTemplateFromQuestions);
     }
     // </editor-fold>
 
